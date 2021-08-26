@@ -1,9 +1,9 @@
 version: '3'
 services:
 
-  feedz:
+  app:
     image: webdevops/php-nginx-dev:7.4-alpine
-    container_name: feedz
+    container_name: app
     working_dir: /app
     environment:
       - WEB_DOCUMENT_ROOT=/app/src/public
@@ -20,21 +20,21 @@ services:
     volumes:
       - './app:/app:rw,cached'
 
-  feedz_adm:
+  phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: feedz_adm
+    container_name: phpmyadmin
     ports:
       - '8080:80'
     environment:
       - PMA_ARBITRARY=1
-      - 'PMA_HOST=mysqldb_feedz'
+      - 'PMA_HOST=mysqldb'
     restart: always
     depends_on:
-      - mysqldb_feedz
+      - mysqldb
 
-  mysqldb_feedz:
+  mysqldb:
     image: 'mysql:latest'
-    container_name: mysqldb_feedz
+    container_name: mysqldb
     restart: always
     env_file:
       - .env
