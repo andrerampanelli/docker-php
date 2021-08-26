@@ -18,7 +18,7 @@ services:
     ports:
       - '80:80'
     volumes:
-      - './eengage:/app:rw,cached'
+      - './app:/app:rw,cached'
 
   feedz_adm:
     image: phpmyadmin/phpmyadmin

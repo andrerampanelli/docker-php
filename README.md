@@ -1,7 +1,7 @@
 # docker-php
 Folders to create
  - data
- - eengage
+ - app
  - elk-data
  
 Run
