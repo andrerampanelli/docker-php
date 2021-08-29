@@ -4,6 +4,7 @@ services:
   app:
     image: webdevops/php-nginx-dev:7.4-alpine
     container_name: app
+    restart: always
     working_dir: /app
     environment:
       - WEB_DOCUMENT_ROOT=/app/src/public
@@ -50,6 +51,7 @@ services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.14.0
     container_name: elk01
+    restart: always
     environment:
       - node.name=elk01
       - bootstrap.memory_lock=true
@@ -70,6 +72,7 @@ services:
   elastichq:
     image: elastichq/elasticsearch-hq
     container_name: elastichq
+    restart: always
     environment:
       - HQ_DEFAULT_URL=http://elk01:9200
       - HQ_DEBUG=True
